@@ -1,0 +1,32 @@
+{
+  "articles" : [
+    {
+      "id":1,
+      "title" : "Lorem Ipsum",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sed arcu massa. Donec mi est, volutpat ac est eget, ultricies varius risus. Mauris auctor metus in velit mollis laoreet. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Vivamus nec nunc euismod, condimentum dolor sit amet, eleifend urna. Duis a urna quis tortor pulvinar dapibus vel vitae libero. Proin odio velit, tincidunt at hendrerit quis, porta id justo. Fusce ac erat id nibh vulputate congue id sit amet magna. Etiam eget tristique tellus. Aliquam vel interdum libero. Donec non enim sed massa porta maximus. Aliquam euismod consectetur mattis. Donec a tempor nulla, a aliquet urna. Ut ac congue massa.",
+      "author":"Neque porro "
+
+    },
+    {
+      "id":2,
+      "title" : "Pellentesque non aliquet velit",
+      "content" : "Ius no verear liberavisse. Altera splendide vim ei, in tritani interesset comprehensam vel, ea eos inermis conceptam. Vix dolorum persequeris deterruisset eu, at sea fugit nullam. Iriure fastidii est ea, cu pro everti perpetua, est natum scripserit ea. Est virtute recteque ad. Vim euismod minimum delicata at, ius ne dico eros epicuri.",
+      "author" : "Altera splendide"
+
+    },
+    {
+      "id":3,
+      "title" : "Blue bottle ennui tbh succulents",
+      "content" : "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "author":"Summus brains"
+
+    },
+    {
+       "id":4,
+      "title" : "Pellentesque non aliquet velit",
+      "content" : "Bacon ipsum dolor amet short ribs brisket venison rump drumstick pig sausage prosciutto chicken spare ribs salami picanha doner. Kevin capicola sausage, buffalo bresaola venison turkey shoulder picanha ham pork tri-tip meatball meatloaf ribeye. Doner spare ribs andouille bacon sausage. Ground round jerky brisket pastrami shank.",
+      "author" : "Aalami picanha"
+
+    }
+  ]
+}
