@@ -47,6 +47,9 @@ const GeneralNavigation = () => {
       <li className="navigation-item">
         <Link to="/signin"> Sign In</Link>
       </li>
+	  <li className="navigation-item">
+		<Link to="/testing"> Testing</Link>
+	  </li>
     </ul>
   );
 };

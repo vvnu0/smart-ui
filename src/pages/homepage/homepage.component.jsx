@@ -10,7 +10,7 @@ const HomePage = () => {
     // Update the document title using the browser API
     axios
       .get('https://api.unsplash.com/search/photos/', {
-        params: { query: 'san fransisco' },
+        params: { query: 'fremont' },
         headers: {
           Authorization: `Client-ID ${Creds.accessKey}`,
         },
