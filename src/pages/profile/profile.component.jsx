@@ -9,12 +9,13 @@ import QRCode from 'react-qr-code';
 const Profile = () => {
   const user = useContext(UserContext);
   const [resident, setResident] = useState([]);
+  const [userId, setUserId] = useState([]);
   useState(() => {
     axios
       .get('http://localhost:8080/resident/60a95aa0027d3d3d6ffb9bce')
       .then(function (response) {
         setResident(response.data);
-
+        setUserId(response.data.userId);
         console.log(response.data);
       })
       .catch(function (error) {
@@ -34,9 +35,9 @@ const Profile = () => {
     <div className="profile">
        <h1> Welcome, {user.userDetails.displayName}</h1>
       <ul>
-        <li>{resident.userId}</li>
-        <li><QRCode value='{resident.userId}' /></li>
-        <li><Link to='<QRCode value={resident.userId} />'> QRCode</Link>
+        <li>{userId}New</li>
+        <li><QRCode value={userId} /></li>
+        <li><Link to='<QRCode value={userId} />'> QRCode</Link>
         </li>
         <li>Links to Providers</li>
         <li>Update Proof of Residency</li>
