@@ -9,8 +9,11 @@ import QRCode from 'react-qr-code';
 const Profile = () => {
   const user = useContext(UserContext);
   const [resident, setResident] = useState([]);
-  const [userId, setUserId] = useState([]);
-  useState(() => {
+  const [userId, setUserId] = useState('');
+  const [qr, setQr] = useState(false);
+  const { loadqr } = qr;
+  
+  useEffect(() => {
     axios
       .get('http://localhost:8080/resident/60a95aa0027d3d3d6ffb9bce')
       .then(function (response) {
@@ -25,25 +28,30 @@ const Profile = () => {
       .then(function () {
         // always executed
       });
-  }, );
+  }, []);
   let history = useHistory();
   if (!user.loggedInStatus) {
     history.push('/signin');
     return null;
   }
   return (
-    <div className="profile">
+    <div>
        <h1> Welcome, {user.userDetails.displayName}</h1>
+       {user.userDetails.id}
       <ul>
-        <li>{userId}New</li>
-        <li><QRCode value={userId} /></li>
-        <li><Link to='<QRCode value={userId} />'> QRCode</Link>
+        <li>{resident.firstName}&nbsp;{resident.lastName}</li>
+        <li><label onClick={() => {setQr(true);}}> QR Code</label>
         </li>
         <li>Links to Providers</li>
         <li>Update Proof of Residency</li>
       </ul>
-      
+      <div>
+        {qr ? (
+          <div><QRCode value={userId} /></div>
+        ) : (<div></div>)}
+      </div>
     </div>
+   
   );
 };
 

@@ -1,4 +1,6 @@
 import firebase from 'firebase/app';
+import axios from 'axios';
+
 require ("firebase/auth");
 require ("firebase/firestore");
 
@@ -35,6 +37,21 @@ const config = {
             createdAt,
             ...addditionalData
           })
+          // const userapi = ''; // {userId: userRef.id, userName: userRef.email};
+          //let usera = {userId: userRef.id, userName: userRef.email};
+          console.log("Calling axios...");
+          axios
+            .post('http://localhost:8080/resident/create')
+            .then(function (response) {
+              console.log(response.data);
+            })
+            .catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
         } catch (error) {
           console.log('error creating the user', error.message)
         }
