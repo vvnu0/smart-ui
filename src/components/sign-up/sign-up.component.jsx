@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import FormInput from '../form-input/form-input.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { auth, createUserProfileDocument } from '../../firebase/firebase.utils';
+import { auth, createUserProfileDocument, createResident } from '../../firebase/firebase.utils';
 import './sign-up.styles.scss';
 
 const SignUp = () => {
@@ -27,7 +27,16 @@ const SignUp = () => {
         userDetails.email,
         userDetails.password
       );
-      await createUserProfileDocument(user, { displayName });
+      console.log("New user signup with email password ", user);
+      
+      const userRef = await createUserProfileDocument(user, { displayName });
+      // userRef.onSnapshot(snapshot => {
+      //   console.log("Creating resident ", snapshot);
+      //   const resident = createResident(
+      //     {userId:snapshot.id,displayName: displayName, userEmail:email}
+      //   );
+      //   console.log("Resident Created ",resident);
+      // })
       setUserDetails({
         displayName: '',
         email: '',

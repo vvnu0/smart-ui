@@ -13,20 +13,22 @@ import Subscribe from './pages/subscribe/subscribe.component';
 import Smart from './pages/smart/smart.component';
 import Testing from './pages/testing/testing.component';
 import Authentication from './pages/authentication/authentication.component'
-import {auth, onAuthStateChange, createUserProfileDocument} from './firebase/firebase.utils';
+import {auth, onAuthStateChange, createUserProfileDocument, getResident} from './firebase/firebase.utils';
 import { UserContext } from './context/user-context/user-context';
-
+import axios from 'axios';
 
 
 function App() {
   const user = useContext(UserContext);
   let history = useHistory();
   const setUser = (authInfo)=> {
+    console.log("Before setting user ", user);
     createUserProfileDocument(authInfo.userDetails);
-    console.log("Set User Info", authInfo);
+    console.log("Set User Info from", authInfo);
     user.setLoggedInStatus(authInfo.loggedInStatus);
     console.log('userDetails',authInfo.userDetails);
     user.setUserDetails(authInfo.userDetails);
+    console.log("After setting user ", user);
 
   }
   useEffect(() => {
@@ -36,15 +38,27 @@ function App() {
         console.log("UA1",userAuth);
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapshot => {
-          console.log(snapshot);
+          console.log("Snapshopt is ", snapshot);
+          console.log("Getting resident data from storage ", snapshot.id);
           setUser({loggedInStatus:true, userDetails:{id:snapshot.id,...snapshot.data()}})
-          console.log("User Logged In ",user);
-          history.push("/profile");
-
+          axios.get('http://localhost:8080/resident/'+snapshot.id)
+            .then(function (response) {
+                console.log("Setting resident data ", response);
+                user.setResidentDetail(response.data);
+                history.push("/profile");
+            }).catch(function (error) {
+              // handle error
+              console.log(error);
+            })
+            .then(function () {
+              // always executed
+            });
+          console.log("User context set, current state ", user);
+          
         })
         console.log('user',user);
       } else {
-        setUser({loggedInStatus:false, userDetails : null})
+        setUser({loggedInStatus:false, userDetails : null, residentDetail: null})
       }
       user.setUserDetails(userAuth);
     })

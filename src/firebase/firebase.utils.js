@@ -16,6 +16,19 @@ const config = {
 
   firebase.initializeApp(config);
 
+  export const createResident = async(userData) => {
+    return await axios.post('http://localhost:8080/resident/create', 
+      {
+        userId:userData.userId,
+        userName: userData.displayName,
+        firstName: userData.displayName,
+        lastName: userData.displayName,
+        emailAddress: userData.userEmail,
+        createdAt: userData.createdAt
+      }
+    )
+  }
+
   export const createUserProfileDocument = async(userAuth, addditionalData) => {
     if(userAuth) {
       console.log('UA2', userAuth);
@@ -26,32 +39,35 @@ const config = {
       console.log('SnapShotExists?', snapShot.exists);
       if(!snapShot.exists) {
         console.log('UA3', userAuth);
-        const {displayName, email} = userAuth;
+        console.log('Additional data', addditionalData);
+        let {displayName, email} = userAuth;
         const createdAt = new Date();
         console.log("Ss",snapShot);
-        console.log(displayName,email,createdAt);
+        console.log("Display email created ", displayName,email,createdAt);
+        if (!displayName && addditionalData && addditionalData.displayName) {
+          displayName = addditionalData.displayName;
+        }
+        console.log("New Display email created ", displayName,email,createdAt);
         try {
           await userRef.set ({
             displayName,
             email,
             createdAt,
             ...addditionalData
+          });
+        } catch (error) {
+          console.log('error creating the user', error.message)
+        }
+
+        //create a resident
+        try {
+          await userRef.get();
+          userRef.onSnapshot(snapshot => {
+            console.log("Creating resident ", snapshot);
+            const resident = createResident(
+              {userId:snapshot.id,displayName: displayName, userEmail:email, createdAt: createdAt}
+            );
           })
-          // const userapi = ''; // {userId: userRef.id, userName: userRef.email};
-          //let usera = {userId: userRef.id, userName: userRef.email};
-          console.log("Calling axios...");
-          axios
-            .post('http://localhost:8080/resident/create')
-            .then(function (response) {
-              console.log(response.data);
-            })
-            .catch(function (error) {
-              // handle error
-              console.log(error);
-            })
-            .then(function () {
-              // always executed
-            });
         } catch (error) {
           console.log('error creating the user', error.message)
         }
@@ -69,10 +85,10 @@ const config = {
     return firebase.auth().onAuthStateChanged(user => {
       console.log('Auth State changed', user);
       if(user) {
-        
-        callback({loggedInStatus:true, userDetails:user})
+        const resident = axios.post('http://localhost:8080/resident/'+user.id);
+        callback({loggedInStatus:true, userDetails:user, residentDetail: resident})
       } else {
-        callback({loggedInStatus:false, userDetails : null})
+        callback({loggedInStatus:false, userDetails : null, residentDetail: null})
       }
     })
   }

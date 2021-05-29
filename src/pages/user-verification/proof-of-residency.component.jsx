@@ -51,14 +51,14 @@ class FileUpload extends React.Component {
        } else if (this.state.uploadStatus === 'success')  {
          return (
            <div>
-           <h3>File uploaded</h3>
+           <h3>Uploaded successfully!</h3>
            <button onClick={() => {this.retryUpload();}}>Upload Another Proof</button>
            </div>
          );
        } else {
          return (
            <div>
-            <h3>Failed to upload file {this.state.uploadStatus}</h3>
+            <h3>Failed to upload file :-( {this.state.uploadStatus}</h3>
             <button onClick={() => {this.retryUpload();}}>Retry Upload</button>
            </div>
          );
