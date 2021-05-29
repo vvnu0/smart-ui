@@ -2,8 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import { UserContext } from '../../context/user-context/user-context';
-import { Link } from 'react-router-dom';
 import QRCode from 'react-qr-code';
+import FileUpload from '../user-verification/proof-of-residency.component';
 
 
 const Profile = () => {
@@ -12,6 +12,8 @@ const Profile = () => {
   const [userId, setUserId] = useState('');
   const [qr, setQr] = useState(false);
   const { loadqr } = qr;
+  const [pfUpload, setPfUpload] = useState(false);
+  const { uploadproof } = pfUpload;
   
   useEffect(() => {
     axios
@@ -35,23 +37,32 @@ const Profile = () => {
     return null;
   }
   return (
-    <div>
+    <div className="profile-container">
        <h1> Welcome, {user.userDetails.displayName}</h1>
        {user.userDetails.id}
       <ul>
         <li>{resident.firstName}&nbsp;{resident.lastName}</li>
-        <li><label onClick={() => {setQr(true);}}> QR Code</label>
+        <li><label onClick={() => {setQr(true);}}>QR Code</label>
         </li>
         <li>Links to Providers</li>
-        <li>Update Proof of Residency</li>
+        <li><label onClick={() => {setPfUpload(true);}}>Update Proof of Residency</label></li>
       </ul>
       <div>
         {qr ? (
           <div><QRCode value={userId} /></div>
         ) : (<div></div>)}
       </div>
-    </div>
+      <div>
+        {pfUpload ? (
+        <div>
+        <FileUpload></FileUpload>
+        </div>
+        ) : (
+        <div></div>
+        )}
+      </div>
    
+   </div>
   );
 };
 
