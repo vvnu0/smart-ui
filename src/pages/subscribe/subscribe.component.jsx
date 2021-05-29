@@ -15,8 +15,16 @@ const Subscribe = () => {
       <h2> Subscribe For : </h2>
       <ul>
         <li>Notifications</li>
-        <li>Emerency Alerts</li>
-        <li>Events In City</li>
+        <li>
+          <label onClick={() => {window.location.assign("https://member.everbridge.net/453003085612570/new");}} target="_blank">
+            Emerency Alerts
+          </label>
+        </li>
+        <li>
+          <label onClick={() => {window.location.assign("https://www.eventbrite.com/d/ca--fremont/events/");}} target="_blank">
+            Events In City
+          </label>
+        </li>
       </ul>
     </div>
   );
