@@ -37,22 +37,17 @@ const Profile = () => {
     return null;
   }
   return (
-    <div class="profile-container">
-       <h1> Welcome, {user.userDetails.displayName}</h1>
-       {user.userDetails.id}
-      <ul>
-        <li>{resident.firstName}&nbsp;{resident.lastName}</li>
-        <li><label onClick={() => {setQr(true);}}>QR Code</label>
-        </li>
-        <li>Links to Providers</li>
-        <li><label onClick={() => {setPfUpload(true);}}>Update Proof of Residency</label></li>
-      </ul>
+    <div className="directory-menu">
       <div>
-        {qr ? (
-          <div><QRCode value={userId} /></div>
-        ) : (<div></div>)}
-      </div>
-      <div>
+        <h1> Welcome, {user.userDetails.displayName}</h1>
+        {user.userDetails.id}
+        <ul>
+          <li>{resident.firstName}&nbsp;{resident.lastName}</li>
+          <li><label onClick={() => {setQr(true); setPfUpload(false);}}>QR Code</label>
+          </li>
+          <li>Links to Providers</li>
+          <li><label onClick={() => {setPfUpload(true); setQr(false);}}>Update Proof of Residency</label></li>
+        </ul>
         {pfUpload ? (
         <div>
         <FileUpload></FileUpload>
@@ -61,8 +56,12 @@ const Profile = () => {
         <div></div>
         )}
       </div>
-   
-   </div>
+      <div>
+        {qr ? (
+          <div className="qrcode-display"><QRCode value={userId} /></div>
+        ) : (<div></div>)}
+      </div>
+    </div>
   );
 };
 

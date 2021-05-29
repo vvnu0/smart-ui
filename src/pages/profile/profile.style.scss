@@ -1,2 +1,10 @@
-.profile-container {display: flex;
-flex-direction: row;}
+.directory-menu {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+}
+
+.qrcode-display {
+  padding-left:20px
+}
