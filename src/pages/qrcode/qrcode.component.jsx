@@ -23,7 +23,7 @@ const QRCodeGenerator = () => {
   }, );
 
   return (
-    <div>
+    <div className="qrcode">
       <QRCode value={resident.userId} />
     </div>
   );

@@ -6,7 +6,8 @@ class FileUpload extends React.Component {
   constructor(props) {
     super(props);
     this.state ={
-      file:null
+      file:null,
+      uploadStatus:null
     }
     this.onFormSubmit = this.onFormSubmit.bind(this)
     this.onChange = this.onChange.bind(this)
@@ -16,6 +17,7 @@ class FileUpload extends React.Component {
     e.preventDefault() // Stop form submit
     this.fileUpload(this.state.file).then((response)=>{
       console.log(response.data);
+      this.setState({uploadStatus:response.data});
     })
   }
   onChange(e) {
@@ -33,14 +35,34 @@ class FileUpload extends React.Component {
     return  post(url, formData,config)
   }
 
+  retryUpload() {
+    this.setState({uploadStatus:null});
+  }
+
   render() {
-    return (
-      <form onSubmit={this.onFormSubmit}>
-        <h1>Upload Proof of Residency</h1>
-        <input type="file" onChange={this.onChange} />
-        <button type="submit">Upload</button>
-      </form>
-   )
+     if (!this.state.uploadStatus) {
+       return (
+        <form onSubmit={this.onFormSubmit}>
+          <h3>Upload Proof of Residency</h3>
+          <input type="file" onChange={this.onChange} />
+          <button type="submit">Upload</button>
+        </form> 
+        );
+       } else if (this.state.uploadStatus === 'success')  {
+         return (
+           <div>
+           <h3>File uploaded</h3>
+           <button onClick={() => {this.retryUpload();}}>Upload Another Proof</button>
+           </div>
+         );
+       } else {
+         return (
+           <div>
+            <h3>Failed to upload file {this.state.uploadStatus}</h3>
+            <button onClick={() => {this.retryUpload();}}>Retry Upload</button>
+           </div>
+         );
+       }
   }
 }
 

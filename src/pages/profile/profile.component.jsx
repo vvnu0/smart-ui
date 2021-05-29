@@ -37,7 +37,7 @@ const Profile = () => {
     return null;
   }
   return (
-    <div className="profile-container">
+    <div class="profile-container">
        <h1> Welcome, {user.userDetails.displayName}</h1>
        {user.userDetails.id}
       <ul>
