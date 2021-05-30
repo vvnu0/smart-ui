@@ -4,17 +4,17 @@ import axios from 'axios';
 require ("firebase/auth");
 require ("firebase/firestore");
 
-const config = {
-    apiKey: "AIzaSyCxA_YK09iNhT1GNY3Qs7D23VztC88IDtY",
-    authDomain: "citysmart-5bfa4.firebaseapp.com",
-    projectId: "citysmart-5bfa4",
-    storageBucket: "citysmart-5bfa4.appspot.com",
-    messagingSenderId: "27759107695",
-    appId: "1:27759107695:web:c14d88f62663877e11b79a"
-  };
+  const firebaseconfig = {
+    apiKey: "AIzaSyD9tNBPTyotFjo-NOXCZ2zyDf610LT8ruI",
+    authDomain: "pilot-city-d1130.firebaseapp.com",
+    projectId: "pilot-city-d1130",
+    storageBucket: "pilot-city-d1130.appspot.com",
+    messagingSenderId: "43076847176",
+    appId: "1:43076847176:web:e2e940f9c67d3d80467a7d",
+    measurementId: "G-TWR0TVSPYM"
+  }
 
-
-  firebase.initializeApp(config);
+  firebase.initializeApp(firebaseconfig);
 
   export const createResident = async(userData) => {
     return await axios.post('http://localhost:8080/resident/create', 
