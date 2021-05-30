@@ -11,12 +11,12 @@ import Profile from './pages/profile/profile.component';
 import NewToCity from './pages/new-to-city/new-to-city.component';
 import Subscribe from './pages/subscribe/subscribe.component';
 import Smart from './pages/smart/smart.component';
-import Testing from './pages/testing/testing.component';
 import Forum from './pages/forum/forum.component';
 import Authentication from './pages/authentication/authentication.component'
 import {auth, onAuthStateChange, createUserProfileDocument, getResident} from './firebase/firebase.utils';
 import { UserContext } from './context/user-context/user-context';
 import axios from 'axios';
+import Covid from './pages/covid/covid.component';
 
 
 function App() {
@@ -76,13 +76,13 @@ function App() {
       <Route exact path='/articles' component={Articles}/>
       <Route exact path='/city' component={City}/>
       <Route exact path='/contact' component={Contact}/>
+      <Route exact path='/Covid' component= {Covid}/>
       <Route exact path='/signin' component={Authentication}/>
       <Route exact path='/profile' component= {Profile}/>
       <Route exact path='/newtocity' component= {NewToCity}/>
       <Route exact path='/subscribe' component= {Subscribe}/>
       <Route exact path='/smart' component= {Smart}/>
-      <Route exact path='/forum' component= {Forum}/>
-      <Route exact path='/testing' component= {Testing}/>
+      <Route exact path='/forum' component= {Forum}/>     
     </div>
   );
 }

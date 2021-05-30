@@ -48,12 +48,12 @@ const GeneralNavigation = () => {
         <Link to="/contact"> Contact</Link>
       </li>
       <li className="navigation-item">
+		     <Link to="/Covid"> Covid-Info</Link>
+	     </li>
+       <li className="navigation-item">
         <Link to="/signin"> Sign In</Link>
       </li>
-	  <li className="navigation-item">
-		<Link to="/testing"> Testing</Link>
-	  </li>
-    </ul>
+	    </ul>
   );
 };
 const Navigation = () => {

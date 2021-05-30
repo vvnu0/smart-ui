@@ -4,6 +4,7 @@ import { UserContext } from '../../context/user-context/user-context';
 import QRCode from 'react-qr-code';
 import FileUpload from '../user-verification/proof-of-residency.component';
 import { Link } from 'react-router-dom';
+import './profile.styles.scss';
 
 const Profile = () => {
   const user = useContext(UserContext);
