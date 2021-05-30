@@ -12,6 +12,7 @@ import NewToCity from './pages/new-to-city/new-to-city.component';
 import Subscribe from './pages/subscribe/subscribe.component';
 import Smart from './pages/smart/smart.component';
 import Testing from './pages/testing/testing.component';
+import Forum from './pages/forum/forum.component';
 import Authentication from './pages/authentication/authentication.component'
 import {auth, onAuthStateChange, createUserProfileDocument, getResident} from './firebase/firebase.utils';
 import { UserContext } from './context/user-context/user-context';
@@ -80,6 +81,7 @@ function App() {
       <Route exact path='/newtocity' component= {NewToCity}/>
       <Route exact path='/subscribe' component= {Subscribe}/>
       <Route exact path='/smart' component= {Smart}/>
+      <Route exact path='/forum' component= {Forum}/>
       <Route exact path='/testing' component= {Testing}/>
     </div>
   );

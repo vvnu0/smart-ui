@@ -21,6 +21,9 @@ const LoggedInNavigation = () => {
         <Link to="/smart"> Smart</Link>
       </li>
       <li className="navigation-item">
+        <Link to="/forum"> Forum</Link>
+      </li>
+      <li className="navigation-item">
         <Link to="" onClick={() => auth.signOut()}>
           Sign Out
         </Link>
