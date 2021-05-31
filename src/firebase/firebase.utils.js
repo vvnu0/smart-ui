@@ -29,6 +29,17 @@ require ("firebase/firestore");
     )
   }
 
+  export const sendEmail = async (emailData) => {
+    console.log('EML', emailData);
+    const db = firestore.collection("contactus");
+    try {
+      await db.doc().set(emailData);
+      console.log('email sent!');
+    } catch (error) {
+      console.log('error sending email', error.message)
+    }
+  }
+
   export const createUserProfileDocument = async(userAuth, addditionalData) => {
     if(userAuth) {
       console.log('UA2', userAuth);

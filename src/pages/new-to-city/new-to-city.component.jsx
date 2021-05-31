@@ -30,7 +30,17 @@ const NewToCity = () => {
           </label>
         </li>
         <li>Free City Wifi</li>
+        <li>
+          <label onClick={() => {window.open("https://aclibrary.bibliocommons.com/locations/FRM", "_blank");}}>
+            Library
+          </label>
+        </li>
         <li>Unified Payment Paltform</li>
+        <li>
+          <label onClick={() => {window.open("https://www.fremont.gov/31/Our-Community", "_blank");}}>
+            And More...
+          </label>
+        </li>
       </ul>
     </div>
   );

@@ -30,11 +30,18 @@ const HomePage = () => {
   }, []);
   return (
     <div className="homepage">
+      <h1> Welcome to the City Smart!</h1>
+      <span>
+        Please register or login to use full features of the resident portal! Meanwhile, please enjoy few scenic pictures of the city!
+      </span>
+      <br/>
+      <br/>
       <div className="directory-menu">
         {pictures.map((picture) => {
           return (
-            <div key={picture.id}>
+            <div key={picture.id} className="img-style">
               <img src={picture.urls.small} />
+              <br/>{picture.alt_description}
             </div>
           );
         })}
